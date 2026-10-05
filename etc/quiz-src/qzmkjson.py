@@ -53,7 +53,7 @@ for k,v in lessons.items():
 with open(os.path.join(dst_dir,'index.js'),'w',encoding='utf-8') as f:
     for i,k in enumerate(lesson_content.keys()):
         f.write(f'import x{k} from "./lesson-{k}.json";\n')
-    t = ', '.join([ f"{i} : x{k}[0]" for i,k in enumerate(lesson_content.keys())]);
+    t = ', '.join(f"{i} : x{k}[0]" for i,k in enumerate(lesson_content.keys()));
     f.write(f"const quiz = {{ {t} }}; \n");
     f.write("export default quiz;")
     
