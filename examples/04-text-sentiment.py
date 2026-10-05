@@ -26,6 +26,8 @@ class SimpleSentimentAnalyzer:
     3. Uses these scores to predict sentiment of new text
     """
     
+    _clean_pattern = re.compile(r'[^a-z\s]')
+
     def __init__(self):
         # Store word scores (positive words get positive scores)
         self.word_scores = {}
@@ -51,7 +53,7 @@ class SimpleSentimentAnalyzer:
         text = text.lower()
         
         # Remove punctuation and special characters
-        text = re.sub(r'[^a-z\s]', '', text)
+        text = self._clean_pattern.sub('', text)
         
         # Split into words
         words = text.split()
